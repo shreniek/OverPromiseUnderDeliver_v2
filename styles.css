@@ -1,0 +1,193 @@
+/* Base styles with intentionally bad design choices */
+body {
+    font-family: "Comic Sans MS", cursive, sans-serif;
+    background: url("/api/placeholder/800/600") repeat;
+    background-color: #ffff00;
+    cursor: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='40' height='48' viewport='0 0 100 100' style='fill:black;font-size:24px;'><text y='50%'>💰</text></svg>") 16 0, auto;
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden;
+}
+
+/* Cursor trail effect */
+.cursor-trail {
+    position: absolute;
+    width: 10px;
+    height: 10px;
+    background: radial-gradient(circle, rgba(255,215,0,1) 0%, rgba(255,0,0,1) 100%);
+    border-radius: 50%;
+    pointer-events: none;
+    z-index: 9999;
+    opacity: 0.7;
+    transform: translate(-50%, -50%);
+}
+
+/* Obnoxious header */
+header {
+    background: linear-gradient(to right, #ff0000, #ff00ff, #00ffff);
+    padding: 20px;
+    text-align: center;
+    animation: blink 0.5s infinite;
+    box-shadow: 0 0 20px 5px rgba(255, 0, 0, 0.7);
+}
+
+/* Blinking animation */
+@keyframes blink {
+    0% { opacity: 1; }
+    50% { opacity: 0.7; }
+    100% { opacity: 1; }
+}
+
+/* Rotating animation */
+@keyframes rotate {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+}
+
+/* Moving animation */
+@keyframes move-horizontal {
+    0% { transform: translateX(0); }
+    50% { transform: translateX(20px); }
+    100% { transform: translateX(0); }
+}
+
+h1 {
+    color: #00ff00;
+    font-size: 3em;
+    text-shadow: 3px 3px 0 #ff0000, 6px 6px 0 #0000ff;
+    margin: 0;
+    animation: move-horizontal 2s infinite;
+}
+
+/* Marquee effect */
+.marquee {
+    background-color: black;
+    color: red;
+    white-space: nowrap;
+    overflow: hidden;
+    width: 100%;
+    padding: 10px 0;
+}
+
+.marquee span {
+    display: inline-block;
+    animation: marquee 15s linear infinite;
+    font-size: 1.5em;
+    font-weight: bold;
+}
+
+@keyframes marquee {
+    0% { transform: translateX(100%); }
+    100% { transform: translateX(-100%); }
+}
+
+/* Main content section */
+.container {
+    max-width: 1200px;
+    margin: 20px auto;
+    padding: 20px;
+    background-color: rgba(255, 255, 255, 0.8);
+    border: 5px dashed red;
+    position: relative;
+}
+
+/* Pop-up modals */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 999;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    width: 80%;
+    max-width: 500px;
+    background-color: #ffff99;
+    border: 5px solid #ff0000;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+    padding: 20px;
+    text-align: center;
+    animation: shake 0.5s infinite;
+}
+
+@keyframes shake {
+    0% { transform: translate(-50%, -50%) rotate(0deg); }
+    25% { transform: translate(-52%, -50%) rotate(1deg); }
+    50% { transform: translate(-50%, -52%) rotate(0deg); }
+    75% { transform: translate(-48%, -50%) rotate(-1deg); }
+    100% { transform: translate(-50%, -50%) rotate(0deg); }
+}
+
+.close-btn {
+    background-color: #ff0000;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    font-size: 1.2em;
+    cursor: pointer;
+    margin-top: 15px;
+    animation: pulse 1s infinite;
+}
+
+.secondary-btn {
+    background-color: #999;
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    margin-top: 10px;
+    font-size: 0.8em;
+}
+
+@keyframes pulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.1); }
+    100% { transform: scale(1); }
+}
+
+/* Fake close button that moves */
+.fake-close {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background-color: red;
+    color: white;
+    border: none;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    cursor: pointer;
+}
+
+.fake-close:hover {
+    animation: move-away 0.5s forwards;
+}
+
+@keyframes move-away {
+    to { transform: translateX(-300px); }
+}
+
+/* Sections */
+.section {
+    margin-bottom: 30px;
+    padding: 15px;
+    background-color: rgba(255, 255, 255, 0.7);
+    border: 3px solid #00ff00;
+    position: relative;
+}
+
+.section h2 {
+    color: #ff00ff;
+    text-decoration: underline;
+    text-decoration-style: wavy;
+    text-decoration-color: #0000ff;
+}
+
+/* Floating elements */
+.floating {
+    position: fixed;
+    animation: float 3s ease-in-out infinite;
+    z-index: 10;
+}
+
+.floating:nth-child(odd) {
+    animation-duration: 4s;
+}
